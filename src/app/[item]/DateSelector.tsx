@@ -1,54 +1,48 @@
 "use client";
 import { cn } from "@/utils/supabase/cn";
 import { Period } from "@/utils/types/idleClanApiTypes";
+import Link from "next/link";
 
-export default function DateSelector({
-  action,
-  active,
-}: {
-  action: (period: Period) => void;
-  active: Period;
-}) {
+export default function DateSelector({ period }: { period: Period }) {
   return (
     <div className="flex">
       <div className="flex flex-row overflow-hidden flex-grow-0 gap-1 p-[2px] rounded-lg shrink bg-gray-200">
-        <button
-          onClick={() => action("1d")}
-          className={cn(
-            "px-2 py-0 rounded-md",
-            active === "1d" && "bg-white shadow-md"
-          )}
-        >
+        <Tab active={period} target="1d">
           1 day
-        </button>
-        <button
-          onClick={() => action("7d")}
-          className={cn(
-            "px-2 py-0 rounded-md",
-            active === "7d" && "bg-white shadow-md"
-          )}
-        >
+        </Tab>
+        <Tab active={period} target="7d">
           7 days
-        </button>
-        <button
-          onClick={() => action("30d")}
-          className={cn(
-            "px-2 py-0 rounded-md",
-            active === "30d" && "bg-white shadow-md"
-          )}
-        >
+        </Tab>
+        <Tab active={period} target="30d">
           30 days
-        </button>
-        <button
-          onClick={() => action("1y")}
-          className={cn(
-            "px-2 py-0 rounded-md",
-            active === "1y" && "bg-white shadow-md"
-          )}
-        >
+        </Tab>
+        <Tab active={period} target="1y">
           1 year
-        </button>
+        </Tab>
       </div>
     </div>
   );
 }
+
+const Tab = ({
+  target,
+  children,
+  active,
+}: {
+  target: Period;
+  children: React.ReactNode;
+  active: string | null;
+}) => {
+  const isActive = active === target;
+  return (
+    <Link
+      href={`?period=${target}`}
+      className={cn(
+        "px-2 py-1 rounded-md",
+        isActive && "bg-white hover:bg-gray-50"
+      )}
+    >
+      {children}
+    </Link>
+  );
+};

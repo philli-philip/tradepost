@@ -1,6 +1,8 @@
 import { allowedItems, isWhiteListed } from "@/content/items";
 import { AllItems } from "@/utils/types/idleClanApiTypes";
 
+export const revalidate = 60;
+
 export default async function Home() {
   const data: AllItems = await fetch(
     "https://query.idleclans.com/api/PlayerMarket/items/prices/latest"

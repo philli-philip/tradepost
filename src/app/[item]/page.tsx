@@ -1,16 +1,22 @@
 import { allowedItems } from "@/content/items";
-import { fetchItem } from "./actions";
+import { fetchItem, fetchPrice } from "./actions";
 import Chart from "./Chart";
 import StaticFacts from "./StaticFacts";
 import MarketFacts from "./marketFacts";
+import { Period } from "@/utils/types/idleClanApiTypes";
+import DateSelector from "./DateSelector";
 
 export default async function Page({
   params,
+  searchParams,
 }: {
   params: Promise<{ item: number }>;
+  searchParams: Promise<{ period: Period }>;
 }) {
   const itemId = (await params).item;
   const item = await fetchItem(itemId);
+  const period = (await searchParams).period;
+  const prices = await fetchPrice({ itemId, period });
 
   const isValidItem = allowedItems[itemId] !== undefined;
   if (!isValidItem) {
@@ -26,7 +32,8 @@ export default async function Page({
         <StaticFacts item={itemId} />
         <MarketFacts marketData={item} />
       </div>
-      <Chart itemId={itemId} />
+      <DateSelector period={period} />
+      <Chart prices={prices} />
     </div>
   );
 }

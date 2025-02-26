@@ -32,7 +32,7 @@ export default async function Page({
         <StaticFacts item={itemId} />
         <MarketFacts marketData={item} />
       </div>
-      <DateSelector period={period} />
+      <DateSelector period={period ?? "1d"} />
       <Chart prices={prices} />
     </div>
   );

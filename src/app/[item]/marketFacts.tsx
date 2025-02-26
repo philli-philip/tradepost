@@ -13,6 +13,8 @@ export default function MarketFacts({
       <span>{marketData.averagePrice7Days}</span>
       <span>Average price 30 days</span>
       <span>{marketData.averagePrice30Days}</span>
+      <span>Trade volume past 24 hours</span>
+      <span>{marketData.tradeVolume1Day}</span>
     </div>
   );
 }

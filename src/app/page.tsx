@@ -25,7 +25,10 @@ export default async function Home() {
           <a href={`/${item.itemId}`} key={item.itemId} className="block">
             {allowedItems[item.itemId]?.name ?? item.itemId} — Lowest Sell
             price: {item.lowestSellPrice} — highest buy price:{" "}
-            {item.highestBuyPrice}
+            {item.highestBuyPrice} — Vendor:
+            {allowedItems[item.itemId].vendorSellPrice}
+            {allowedItems[item.itemId].vendorSellPrice! >
+              item.highestBuyPrice && "RED"}
           </a>
         ))}
       </div>

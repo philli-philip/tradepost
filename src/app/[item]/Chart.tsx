@@ -34,19 +34,32 @@ export function Chart({ data }: { data: PriceHistory }) {
           tickFormatter={(value) => value}
         />
         <YAxis orientation="right" tickLine={false} axisLine={false} />
-        <ChartTooltip cursor={true} content={<ChartTooltipContent />} />
+        <ChartTooltip
+          cursor={true}
+          content={<ChartTooltipContent label="label" />}
+        />
+        <Line
+          dataKey="averagePrice"
+          label="Average price"
+          type="monotoneX"
+          stroke="hsl(var(--chart-3))"
+          strokeWidth={2}
+          dot={false}
+        />
         <Line
           dataKey="lowesSellPrice"
           type="monotoneX"
           stroke="var(--color-desktop)"
           label="Test"
           strokeWidth={2}
+          opacity="0.6"
           dot={false}
         />
         <Line
           dataKey="highestSellPrice"
           type="monotoneX"
           stroke="hsl(var(--chart-2))"
+          opacity="0.6"
           strokeWidth={2}
           dot={false}
         />

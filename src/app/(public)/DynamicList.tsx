@@ -13,7 +13,9 @@ export default function DynamicList({ items }: { items: AllItems }) {
     const itemId = item.itemId.toString();
     if (
       itemId.includes(searchValue) ||
-      allowedItems[item.itemId].name?.includes(searchValue)
+      allowedItems[item.itemId].name
+        ?.toLocaleLowerCase()
+        .includes(searchValue.toLowerCase())
     ) {
       return true;
     }

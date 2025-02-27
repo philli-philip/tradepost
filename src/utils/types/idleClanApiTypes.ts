@@ -8,13 +8,15 @@ export type DetailedPriceItem = {
   tradeVolume1Day: number;
 };
 
-export type AllItems = {
+export type tradeItem = {
   itemId: number;
   lowestSellPrice: number;
   lowestPriceVolume: number;
   highestBuyPrice: number;
   highestPriceVolume: number;
-}[];
+};
+
+export type AllItems = tradeItem[];
 
 export type PriceHistory = {
   itemID: number;

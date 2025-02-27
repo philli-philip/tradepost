@@ -81,6 +81,7 @@ export const allowedItems: Record<
   248: { name: "Red leather", itemId: 248, vendorSellPrice: 400 },
   249: { name: "Black leather", itemId: 249, vendorSellPrice: 750 },
   275: { name: "Cursed flax", itemId: 275, vendorSellPrice: 34 },
+  290: { name: "Normal crafting needle", itemId: 290, vendorSellPrice: 32 },
   400: { name: "Grape seeds", itemId: 400, vendorSellPrice: 80 },
   402: { name: "Papaya seeds", itemId: 402, vendorSellPrice: 100 },
   404: { name: "Dragon fruit seeds", itemId: 404, vendorSellPrice: 125 },

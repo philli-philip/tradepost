@@ -38,7 +38,7 @@ export const SearchBar: React.FC<SearchBarInterface> = ({
       <input
         ref={searchBar}
         onChange={onChange}
-        className="bg-transparent placeholder:text-gray-500 w-full p-4 px-6 rounded-full"
+        className="bg-transparent placeholder:text-gray-500 w-full p-3 px-6 rounded-full"
         placeholder="Seach by name or id"
         {...props}
       />

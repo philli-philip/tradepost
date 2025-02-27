@@ -19,21 +19,10 @@ export default async function Home() {
     .sort((a, b) => a.itemId - b.itemId);
 
   return (
-    <div className="flex flex-col items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="flex flex-col min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <h1>Tradepost</h1>
       <div>
-        <h2>Filtered items</h2>
         <DynamicList items={filteredData} />
-        {filteredData?.map((item) => (
-          <a href={`/${item.itemId}`} key={item.itemId} className="block">
-            {allowedItems[item.itemId]?.name ?? item.itemId} — {item.itemId} —
-            Lowest Sell price: {compactNumber(item.lowestSellPrice)} — highest
-            buy price: {compactNumber(item.highestBuyPrice)} — Vendor:
-            {compactNumber(allowedItems[item.itemId].vendorSellPrice)}
-            {allowedItems[item.itemId].vendorSellPrice! >
-              item.highestBuyPrice && "RED"}
-          </a>
-        ))}
       </div>
       <div>
         <h2>All items</h2>

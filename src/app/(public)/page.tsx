@@ -1,5 +1,4 @@
 import { allowedItems, isWhiteListed } from "@/content/items";
-import { compactNumber } from "@/utils/formater/formater";
 import { AllItems } from "@/utils/types/idleClanApiTypes";
 import DynamicList from "./DynamicList";
 

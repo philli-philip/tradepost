@@ -30,33 +30,37 @@ export default function DynamicList({ items }: { items: AllItems }) {
   return (
     <>
       <SearchBar onChange={handleSearchChange} className="mb-4" />
-      <ul className="border border-gray-200 rounded-xl">
-        {filtered.map((item) => (
-          <li
-            key={item.itemId}
-            className="block"
-            aria-label={item.itemId.toString()}
-          >
-            <Link
-              href={{ pathname: `/${item.itemId}` }}
-              className="py-1 flex flex-1 gap-2 flex-row px-2 border-b border-gray-200"
+      {filtered.length === 0 ? (
+        <div> No results</div>
+      ) : (
+        <ul className="border border-gray-200 rounded-xl">
+          {filtered.map((item) => (
+            <li
+              key={item.itemId}
+              className="block"
+              aria-label={item.itemId.toString()}
             >
-              <span className="text-gray-500 hidden md:flex text-right pr-2 w-9 font-mono">
-                {item.itemId}
-              </span>
-              <span className="flex flex-1 truncate text-ellipsis">
-                {allowedItems[item.itemId].name}
-              </span>
-              <span className="flex flex-1">
-                Buy: {compactNumber(item.highestBuyPrice)}
-              </span>
-              <span className="flex flex-1 justify-end">
-                Sell: {compactNumber(item.lowestSellPrice)}
-              </span>
-            </Link>
-          </li>
-        ))}
-      </ul>
+              <Link
+                href={{ pathname: `/${item.itemId}` }}
+                className="py-1 flex flex-1 gap-2 flex-row px-2 border-b border-gray-200 hover:bg-gray-100 duration-75"
+              >
+                <span className="text-gray-500 hidden md:flex text-right pr-2 w-9 font-mono">
+                  {item.itemId}
+                </span>
+                <span className="flex flex-1 truncate text-ellipsis">
+                  {allowedItems[item.itemId].name}
+                </span>
+                <span className="flex flex-1">
+                  Buy: {compactNumber(item.highestBuyPrice)}
+                </span>
+                <span className="flex flex-1 justify-end">
+                  Sell: {compactNumber(item.lowestSellPrice)}
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 }

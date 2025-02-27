@@ -33,7 +33,11 @@ export default async function Page({
         <MarketFacts marketData={item} />
       </div>
       <DateSelector period={period ?? "7d"} />
-      <Chart data={prices} period={period} />
+      <Chart
+        data={prices}
+        vendorSellPrice={allowedItems[itemId].vendorSellPrice}
+        period={period}
+      />
     </div>
   );
 }

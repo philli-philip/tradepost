@@ -1,6 +1,13 @@
 "use client";
 import { Period, PriceHistory } from "@/utils/types/idleClanApiTypes";
-import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
+import {
+  CartesianGrid,
+  Line,
+  LineChart,
+  ReferenceLine,
+  XAxis,
+  YAxis,
+} from "recharts";
 import {
   ChartConfig,
   ChartContainer,
@@ -24,8 +31,10 @@ const chartConfig = {
 export function Chart({
   data,
   period,
+  vendorSellPrice,
 }: {
   data: PriceHistory;
+  vendorSellPrice?: number;
   period: Period;
 }) {
   const tickFormatter = (value: string) => {
@@ -63,6 +72,11 @@ export function Chart({
           stroke="hsl(var(--chart-3))"
           strokeWidth={2}
           dot={false}
+        />
+        <ReferenceLine
+          y={vendorSellPrice}
+          label="Vendor price"
+          stroke="gray"
         />
         <Line
           dataKey="lowesSellPrice"

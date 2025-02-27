@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/utils/supabase/cn";
+import { cn } from "@/utils/tailwind/cn";
 import { useEffect, useRef } from "react";
 
 interface SearchBarInterface extends React.HTMLAttributes<HTMLInputElement> {
@@ -34,11 +34,11 @@ export const SearchBar: React.FC<SearchBarInterface> = ({
   }
 
   return (
-    <div className={cn("flex rounded-full bg-gray-200", className)}>
+    <div className={cn("flex rounded-xl bg-gray-200", className)}>
       <input
         ref={searchBar}
         onChange={onChange}
-        className="bg-transparent placeholder:text-gray-500 w-full p-3 px-6 rounded-full"
+        className="bg-transparent placeholder:text-gray-500 w-full p-3 px-6 rounded-xl"
         placeholder="Seach by name or id"
         {...props}
       />

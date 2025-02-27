@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/utils/supabase/cn";
+import { cn } from "@/utils/tailwind/cn";
 import * as React from "react";
 import * as RechartsPrimitive from "recharts";
 

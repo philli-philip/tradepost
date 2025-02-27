@@ -1,5 +1,5 @@
 "use client";
-import { PriceHistory } from "@/utils/types/idleClanApiTypes";
+import { Period, PriceHistory } from "@/utils/types/idleClanApiTypes";
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 import {
   ChartConfig,
@@ -7,21 +7,37 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
-];
+import {
+  compactDate,
+  hourDateFormat,
+  shortDateFormat,
+  tinyDateFormat,
+} from "@/utils/formater/formater";
+
 const chartConfig = {
   desktop: {
     label: "Desktop",
     color: "hsl(var(--chart-1))",
   },
 } satisfies ChartConfig;
-export function Chart({ data }: { data: PriceHistory }) {
+
+export function Chart({
+  data,
+  period,
+}: {
+  data: PriceHistory;
+  period: Period;
+}) {
+  const tickFormatter = (value: string) => {
+    const date = new Date(value);
+    const format =
+      period === "1y"
+        ? tinyDateFormat
+        : period === "1d"
+        ? hourDateFormat
+        : shortDateFormat;
+    return compactDate({ date, format });
+  };
   return (
     <ChartContainer config={chartConfig}>
       <LineChart accessibilityLayer data={data} margin={{ right: -20 }}>
@@ -31,7 +47,9 @@ export function Chart({ data }: { data: PriceHistory }) {
           tickLine={true}
           axisLine={false}
           tickMargin={8}
-          tickFormatter={(value) => value}
+          tickCount={0}
+          minTickGap={96}
+          tickFormatter={tickFormatter}
         />
         <YAxis orientation="right" tickLine={false} axisLine={false} />
         <ChartTooltip

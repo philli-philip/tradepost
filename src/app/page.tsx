@@ -1,4 +1,5 @@
 import { allowedItems, isWhiteListed } from "@/content/items";
+import { compactNumber } from "@/utils/formater/formater";
 import { AllItems } from "@/utils/types/idleClanApiTypes";
 
 export const revalidate = 60;
@@ -24,9 +25,9 @@ export default async function Home() {
         {filteredData?.map((item) => (
           <a href={`/${item.itemId}`} key={item.itemId} className="block">
             {allowedItems[item.itemId]?.name ?? item.itemId} — Lowest Sell
-            price: {item.lowestSellPrice} — highest buy price:{" "}
-            {item.highestBuyPrice} — Vendor:
-            {allowedItems[item.itemId].vendorSellPrice}
+            price: {compactNumber(item.lowestSellPrice)} — highest buy price:{" "}
+            {compactNumber(item.highestBuyPrice)} — Vendor:
+            {compactNumber(allowedItems[item.itemId].vendorSellPrice)}
             {allowedItems[item.itemId].vendorSellPrice! >
               item.highestBuyPrice && "RED"}
           </a>

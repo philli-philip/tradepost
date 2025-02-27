@@ -18,8 +18,8 @@ export default async function Home() {
     .sort((a, b) => a.itemId - b.itemId);
 
   return (
-    <div className="flex flex-col min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <h1>Tradepost</h1>
+    <div className="flex flex-col gap-4">
+      <h1 className="font-bold tracking-tight">Tradepost</h1>
       <div>
         <DynamicList items={filteredData} />
       </div>

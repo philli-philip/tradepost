@@ -21,7 +21,7 @@ export const hourDateFormat = new Intl.DateTimeFormat("de-DE", {
 
 export function compactNumber(number: number | undefined) {
   if (!number) {
-    return "undefined";
+    return "0";
   }
 
   return compactNumberFormat.format(number);

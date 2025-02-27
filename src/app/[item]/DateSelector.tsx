@@ -37,6 +37,7 @@ const Tab = ({
   return (
     <Link
       href={`?period=${target}`}
+      scroll={false}
       className={cn(
         "px-2 py-1 rounded-md",
         isActive && "bg-white hover:bg-gray-50"

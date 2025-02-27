@@ -1,6 +1,7 @@
 import { allowedItems, isWhiteListed } from "@/content/items";
 import { compactNumber } from "@/utils/formater/formater";
 import { AllItems } from "@/utils/types/idleClanApiTypes";
+import DynamicList from "./DynamicList";
 
 export const revalidate = 60;
 
@@ -22,11 +23,12 @@ export default async function Home() {
       <h1>Tradepost</h1>
       <div>
         <h2>Filtered items</h2>
+        <DynamicList items={filteredData} />
         {filteredData?.map((item) => (
           <a href={`/${item.itemId}`} key={item.itemId} className="block">
-            {allowedItems[item.itemId]?.name ?? item.itemId} — Lowest Sell
-            price: {compactNumber(item.lowestSellPrice)} — highest buy price:{" "}
-            {compactNumber(item.highestBuyPrice)} — Vendor:
+            {allowedItems[item.itemId]?.name ?? item.itemId} — {item.itemId} —
+            Lowest Sell price: {compactNumber(item.lowestSellPrice)} — highest
+            buy price: {compactNumber(item.highestBuyPrice)} — Vendor:
             {compactNumber(allowedItems[item.itemId].vendorSellPrice)}
             {allowedItems[item.itemId].vendorSellPrice! >
               item.highestBuyPrice && "RED"}

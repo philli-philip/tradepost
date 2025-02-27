@@ -28,7 +28,7 @@ export default async function Page({
       <h1 className="font-bold text-3xl tracking-tight">
         {allowedItems[itemId].name ?? itemId}
       </h1>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <StaticFacts item={itemId} />
         <MarketFacts marketData={item} />
       </div>

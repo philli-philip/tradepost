@@ -12,7 +12,7 @@ export const compactGoldFormat = new Intl.NumberFormat("de-DE", {
 
 export const tinyDateFormat = new Intl.DateTimeFormat("de-DE", {
   month: "short",
-  year: "2-digit",
+  year: "numeric",
 });
 
 export const shortDateFormat = new Intl.DateTimeFormat("de-DE", {

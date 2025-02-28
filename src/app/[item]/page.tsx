@@ -69,7 +69,7 @@ export default async function Page({
   );
 }
 
-export const AmountSlice = ({
+const AmountSlice = ({
   data,
   maxValue = 100,
   buyOrSell = "buy",

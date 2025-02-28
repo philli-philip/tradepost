@@ -7,7 +7,7 @@ export default function MarketFacts({
   marketData: DetailedPriceItem;
 }) {
   return (
-    <div className="md:border border-gray-300 rounded-2xl md:p-6 grid grid-cols-2 gap-4">
+    <div className="md:border border-gray-200 dark:border-gray-800 rounded-2xl md:p-6 grid grid-cols-2 gap-4">
       <span>Average price today</span>
       <span>{compactNumber(marketData.averagePrice1Day)}</span>
       <span>Average price 7 days</span>

@@ -38,7 +38,10 @@ export default async function Page({
           className="size-8 rounded-lg p-[2px]"
           aria-label="Back to homepage"
         >
-          <ArrowLeft size={28} className="text-gray-500 hover:text-gray-800" />
+          <ArrowLeft
+            size={28}
+            className="text-gray-500 hover:text-foreground hover:dark:text-foreground"
+          />
         </Link>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -33,7 +33,7 @@ export default function DynamicList({ items }: { items: AllItems }) {
       {filtered.length === 0 ? (
         <div> No results</div>
       ) : (
-        <ul className="border border-gray-200 rounded-xl">
+        <ul className="border border-gray-200 overflow-hidden dark:border-gray-800 rounded-xl">
           {filtered.map((item) => (
             <li
               key={item.itemId}
@@ -42,7 +42,7 @@ export default function DynamicList({ items }: { items: AllItems }) {
             >
               <Link
                 href={{ pathname: `/${item.itemId}` }}
-                className="py-1 flex flex-1 gap-2 flex-row px-2 border-b border-gray-200 hover:bg-gray-100 duration-75"
+                className="py-1 flex flex-1 gap-2 flex-row px-2 border-b border-gray-200 dark:border-gray-800 hover:bg-gray-100 hover:dark:bg-gray-900 duration-75"
               >
                 <span className="text-gray-500 hidden md:flex text-right pr-2 w-9 font-mono">
                   {item.itemId}

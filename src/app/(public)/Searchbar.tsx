@@ -35,7 +35,7 @@ export const SearchBar: React.FC<SearchBarInterface> = ({
 
   return (
     <div
-      className={cn("flex rounded-xl bg-gray-200 dark:bg-gray-800", className)}
+      className={cn("flex rounded-xl bg-gray-100 dark:bg-gray-900", className)}
     >
       <input
         ref={searchBar}

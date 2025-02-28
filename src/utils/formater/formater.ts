@@ -3,6 +3,12 @@ export const compactNumberFormat = new Intl.NumberFormat("de-DE", {
   notation: "compact",
   compactDisplay: "short",
 });
+export const compactGoldFormat = new Intl.NumberFormat("de-DE", {
+  style: "unit",
+  notation: "compact",
+  compactDisplay: "short",
+  unit: "gram",
+});
 
 export const tinyDateFormat = new Intl.DateTimeFormat("de-DE", {
   month: "short",
@@ -25,6 +31,13 @@ export function compactNumber(number: number | undefined) {
   }
 
   return compactNumberFormat.format(number);
+}
+export function compactGold(number: number | undefined) {
+  if (!number) {
+    return "0";
+  }
+
+  return compactGoldFormat.format(number);
 }
 
 export function compactDate({

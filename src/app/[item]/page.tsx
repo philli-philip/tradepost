@@ -30,16 +30,16 @@ export default async function Page({
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-row-reverse justify-end gap-2">
-        <h1 className="font-bold text-2xl tracking-tight">
+        <h1 className="font-bold text-xl tracking-tight">
           {allowedItems[itemId].name ?? itemId}
         </h1>
         <Link
           href="/"
-          className="size-8 rounded-lg p-[2px]"
+          className="size-7 rounded-lg p-[2px]"
           aria-label="Back to homepage"
         >
           <ArrowLeft
-            size={28}
+            size={24}
             className="text-gray-500 hover:text-foreground hover:dark:text-foreground"
           />
         </Link>

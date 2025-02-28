@@ -30,7 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <main className="font-[family-name:var(--font-geist-sans)] p-8 max-w-5xl mx-auto">
+        <main className="font-[family-name:var(--font-geist-sans)] py-8 max-w-5xl mx-auto">
           {children}
         </main>
         <Analytics />

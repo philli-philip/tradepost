@@ -30,7 +30,7 @@ export default async function Page({
   }
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 px-4">
       <div className="flex flex-row-reverse justify-end gap-2">
         <h1 className="font-bold text-xl tracking-tight">
           {allowedItems[itemId].name ?? itemId}

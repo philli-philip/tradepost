@@ -19,10 +19,8 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="font-bold tracking-tight text-xl">Tradepost</h1>
-      <div>
-        <DynamicList items={filteredData} />
-      </div>
+      <h1 className="font-bold tracking-tight text-xl px-4">Tradepost</h1>
+      <DynamicList items={filteredData} />
       <div>
         <h2>All items</h2>
         {rest?.map((item) => (

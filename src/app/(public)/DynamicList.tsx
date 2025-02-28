@@ -4,7 +4,7 @@ import { useState } from "react";
 import { allowedItems } from "@/content/items";
 import Link from "next/link";
 import { SearchBar } from "./Searchbar";
-import { compactNumber } from "@/utils/formater/formater";
+import { compactGold } from "@/utils/formater/formater";
 
 export default function DynamicList({ items }: { items: AllItems }) {
   const [searchValue, setSearchValue] = useState("");
@@ -51,10 +51,10 @@ export default function DynamicList({ items }: { items: AllItems }) {
                   {allowedItems[item.itemId].name}
                 </span>
                 <span className="flex flex-1">
-                  Buy: {compactNumber(item.highestBuyPrice)}
+                  Buy: {compactGold(item.highestBuyPrice)}
                 </span>
                 <span className="flex flex-1 justify-end">
-                  Sell: {compactNumber(item.lowestSellPrice)}
+                  Sell: {compactGold(item.lowestSellPrice)}
                 </span>
               </Link>
             </li>

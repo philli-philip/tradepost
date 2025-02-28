@@ -84,7 +84,7 @@ export const AmountSlice = ({
   return (
     <div
       className={cn(
-        "h-12 relative flex items-center *:justify-center *:flex *:flex-1 border-b border-gray-200 dark:border-gray-800",
+        "h-12 relative flex items-center border-b border-gray-200 dark:border-gray-800",
         buyOrSell === "buy" ? "flex-row" : "flex-row-reverse"
       )}
     >
@@ -97,9 +97,15 @@ export const AmountSlice = ({
         )}
         style={{ width: fill + "%" }}
       ></div>
-      <span>{compactGold(accumulatedAmount)}</span>
-      <span>{compactNumber(data.value)}</span>
-      <span>{compactGold(data.key)}</span>
+      <span className="hidden justify-center text-center md:flex flex-1">
+        {compactGold(accumulatedAmount)}
+      </span>
+      <span className="justify-center text-center md:flex flex-1">
+        {compactNumber(data.value)}
+      </span>
+      <span className="justify-center text-center md:flex flex-1">
+        {compactGold(data.key)}
+      </span>
     </div>
   );
 };

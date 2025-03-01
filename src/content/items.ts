@@ -36,6 +36,7 @@ export const allowedItems: ItemTypeList = {
   39: { name: "Platinum ore", itemId: 39, vendorSellPrice: 62 },
   41: { name: "Meteroit ore", itemId: 41, vendorSellPrice: 105 },
   42: { name: "Titanium ore", itemId: 42, vendorSellPrice: 155 },
+  43: { name: "Platinum bar", itemId: 43, vendorSellPrice: 195 },
   45: { name: "Meteroit bar", itemId: 45, vendorSellPrice: 345 },
   46: { name: "Titanium bar", itemId: 46, vendorSellPrice: 650 },
   47: { name: "Astronomical ore", itemId: 47, vendorSellPrice: 25_000 },

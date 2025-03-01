@@ -23,20 +23,20 @@ const AmountSlice = ({
     >
       <div
         className={cn(
-          "h-full absolute top-0 -z-10 ",
+          "h-full absolute top-0",
           buyOrSell === "buy"
-            ? "right-0 bg-red-500/40"
-            : "left-0 bg-green-500/40 "
+            ? "right-0 bg-red-200 dark:bg-red-950 border-l border-red-600 dark:border-red-600"
+            : "left-0 bg-green-200 dark:bg-green-950 border-r border-green-600 dark:border-green-600"
         )}
         style={{ width: fill + "%" }}
       ></div>
-      <span className="hidden justify-center text-center md:flex flex-1">
+      <span className="hidden justify-center z-10 text-center md:flex flex-1">
         {compactGold(accumulatedAmount)}
       </span>
-      <span className="justify-center text-center md:flex flex-1">
+      <span className="justify-center z-10 text-center md:flex flex-1">
         {compactNumber(data.value)}
       </span>
-      <span className="justify-center text-center md:flex flex-1">
+      <span className="justify-center z-10 text-center md:flex flex-1">
         {compactGold(data.key)}
       </span>
     </div>

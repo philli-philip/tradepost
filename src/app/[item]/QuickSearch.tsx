@@ -37,14 +37,12 @@ export function QuickSearch() {
   }
 
   const filteredItems = filterItems(allowedItems, searchTerm);
-  console.log("items", filterItems);
 
   useEffect(() => {}, []);
   return (
     <div className="flex flex-row-reverse bg-gray-100 dark:bg-gray-900 rounded-full relative">
       <button
         onClick={() => {
-          console.log(state);
           if (state === "closed") {
             setState("open");
             searchInput?.current?.focus();

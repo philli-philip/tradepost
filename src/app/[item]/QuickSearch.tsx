@@ -53,6 +53,7 @@ export function QuickSearch() {
       </button>
       <input
         ref={searchInput}
+        type="text"
         onChange={(e) => setSearchTerm(e.currentTarget?.value)}
         className={cn(
           state === "open" ? "w-48 opacity-100 pl-3" : "w-0 opacity-0 pl-0",

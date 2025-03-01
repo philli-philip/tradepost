@@ -33,16 +33,16 @@ export default function DynamicList({ items }: { items: AllItems }) {
       {filtered.length === 0 ? (
         <div> No results</div>
       ) : (
-        <ul className="border-t md:border border-gray-200 overflow-hidden dark:border-gray-800 md:rounded-xl">
+        <ul className="border-t md:border divide-y divide-gray-200 dark:divide-gray-800 border-gray-200 overflow-hidden dark:border-gray-800 md:rounded-xl">
           {filtered.map((item) => (
             <li
               key={item.itemId}
-              className="block"
+              className="block  hover:bg-gray-100 hover:dark:bg-gray-900 duration-75"
               aria-label={item.itemId.toString()}
             >
               <Link
                 href={{ pathname: `/${item.itemId}` }}
-                className="py-3  md:py-2 flex flex-1 gap-2 flex-row px-4 border-b border-gray-200 dark:border-gray-800 hover:bg-gray-100 hover:dark:bg-gray-900 duration-75"
+                className="py-3 md:py-2 flex flex-1 gap-2 flex-row px-4 "
               >
                 <span className="text-gray-500 hidden md:flex text-right pr-2 w-9 font-mono">
                   {item.itemId}

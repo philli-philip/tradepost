@@ -40,7 +40,12 @@ export function QuickSearch() {
 
   useEffect(() => {}, []);
   return (
-    <div className="flex flex-row-reverse bg-gray-100 dark:bg-gray-900 rounded-full relative">
+    <div
+      className={cn(
+        "flex flex-row-reverse rounded-full relative",
+        state === "open" && "bg-gray-100 dark:bg-gray-900 "
+      )}
+    >
       <button
         onClick={() => {
           if (state === "closed") {
@@ -54,7 +59,17 @@ export function QuickSearch() {
         }}
         className="size-8 flex rounded-full items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-800"
       >
-        {state === "closed" ? <SearchIcon size={20} /> : <X size={20} />}
+        {state === "closed" ? (
+          <SearchIcon
+            size={24}
+            className="text-gray-700 duration-75 dark:text-gray-300 hover:text-foreground hover:dark:text-foreground"
+          />
+        ) : (
+          <X
+            size={20}
+            className="text-gray-700 duration-75 dark:text-gray-300 hover:text-foreground hover:dark:text-foreground"
+          />
+        )}
       </button>
       <input
         ref={searchInput}
@@ -71,7 +86,7 @@ export function QuickSearch() {
       ></input>
       <ul
         className={cn(
-          "absolute top-8 flex flex-col items-stretch max-h-72 overflow-y-auto bg-white shadow-lg rounded-xl py-2 w-56 left-0",
+          "absolute top-8 flex flex-col items-stretch max-h-72 overflow-y-auto bg-white dark:bg-gray-800 shadow-lg dark:shadow-black dark:shadow-2xl rounded-xl py-2 w-56 left-0",
           searchTerm.length > 1 ? "block" : "hidden"
         )}
       >

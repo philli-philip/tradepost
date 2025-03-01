@@ -45,7 +45,14 @@ export function QuickSearch() {
       <button
         onClick={() => {
           console.log(state);
-          setState(state === "open" ? "closed" : "open");
+          if (state === "closed") {
+            setState("open");
+            searchInput?.current?.focus();
+          } else {
+            setState("closed");
+            setSearchTerm("");
+            searchInput.current?.blur();
+          }
         }}
         className="size-8 flex rounded-full items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-800"
       >
@@ -54,6 +61,7 @@ export function QuickSearch() {
       <input
         ref={searchInput}
         type="text"
+        value={searchTerm}
         onChange={(e) => setSearchTerm(e.currentTarget?.value)}
         className={cn(
           state === "open" ? "w-48 opacity-100 pl-3" : "w-0 opacity-0 pl-0",

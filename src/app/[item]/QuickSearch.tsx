@@ -56,7 +56,7 @@ export function QuickSearch() {
         onChange={(e) => setSearchTerm(e.currentTarget?.value)}
         className={cn(
           state === "open" ? "w-48 opacity-100 pl-3" : "w-0 opacity-0 pl-0",
-          "duration-100 outline-none bg-transparent rounded-full focus:w-48 focus:opacity-100 focus:pl-3"
+          "duration-100 placeholder:text-gray-500 outline-none bg-transparent rounded-full focus:w-48 focus:opacity-100 focus:pl-3"
         )}
         placeholder="Search for name or id..."
       ></input>

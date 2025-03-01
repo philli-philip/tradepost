@@ -5,13 +5,17 @@ import {
 } from "@/utils/types/idleClanApiTypes";
 
 export async function fetchItem(itemId: number): Promise<DetailedPriceItem> {
-  const data = await fetch(
-    `https://query.idleclans.com/api/PlayerMarket/items/prices/latest/comprehensive/${itemId}`,
-    {
-      next: { revalidate: 30 },
-    }
-  ).then((res) => res.json());
-  return data;
+  try {
+    const data = await fetch(
+      `https://query.idleclans.com/api/PlayerMarket/items/prices/latest/comprehensive/${itemId}`,
+      {
+        next: { revalidate: 30 },
+      }
+    ).then((res) => res.json());
+    return data;
+  } catch (e) {
+    throw new Error(e instanceof Error ? e.message : "Error while loading");
+  }
 }
 
 export async function fetchPrice({

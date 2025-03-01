@@ -17,6 +17,7 @@ export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const items = Object.keys(allowedItems);
+  console.log(items);
 
   return [{ param: { item: 1 } }, { param: { item: 2 } }];
 }

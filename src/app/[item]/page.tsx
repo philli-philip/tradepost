@@ -25,8 +25,7 @@ export default async function Page({
   const period = (await searchParams).period;
   const prices = await fetchPrice({ itemId, period });
 
-  const isValidItem = allowedItems[itemId] !== undefined;
-  if (!isValidItem) {
+  if (allowedItems[itemId] === undefined) {
     return <div>Item not yet supported by the Trade post</div>;
   }
 

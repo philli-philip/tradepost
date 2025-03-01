@@ -13,8 +13,6 @@ import { Suspense } from "react";
 
 export const revalidate = 60;
 
-export const dynamicParams = false;
-
 export async function generateStaticParams() {
   const items = Object.keys(allowedItems);
   console.log(items);

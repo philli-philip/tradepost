@@ -6,7 +6,10 @@ export const revalidate = 60;
 
 export default async function Home() {
   const data: AllItems = await fetch(
-    "https://query.idleclans.com/api/PlayerMarket/items/prices/latest"
+    "https://query.idleclans.com/api/PlayerMarket/items/prices/latest",
+    {
+      next: { revalidate: 30 },
+    }
   ).then((res) => res.json());
 
   const rest = data

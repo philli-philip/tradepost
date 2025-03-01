@@ -6,7 +6,10 @@ import {
 
 export async function fetchItem(itemId: number): Promise<DetailedPriceItem> {
   const data = await fetch(
-    `https://query.idleclans.com/api/PlayerMarket/items/prices/latest/comprehensive/${itemId}`
+    `https://query.idleclans.com/api/PlayerMarket/items/prices/latest/comprehensive/${itemId}`,
+    {
+      next: { revalidate: 30 },
+    }
   ).then((res) => res.json());
   return data;
 }
@@ -19,6 +22,9 @@ export async function fetchPrice({
   period?: Period;
 }): Promise<PriceHistory> {
   return await fetch(
-    `https://query.idleclans.com/api/PlayerMarket/items/prices/history/${itemId}?period=${period}`
+    `https://query.idleclans.com/api/PlayerMarket/items/prices/history/${itemId}?period=${period}`,
+    {
+      next: { revalidate: 30 },
+    }
   ).then((res) => res.json());
 }

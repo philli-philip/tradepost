@@ -9,6 +9,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { cn } from "@/utils/tailwind/cn";
 import { compactGold, compactNumber } from "@/utils/formater/formater";
+import { QuickSearch } from "./QuickSearch";
 
 export const revalidate = 60;
 
@@ -32,7 +33,8 @@ export default async function Page({
   return (
     <div className="flex flex-col gap-6 px-4">
       <div className="flex flex-row-reverse justify-end gap-2">
-        <h1 className="font-bold text-xl tracking-tight">
+        <QuickSearch />
+        <h1 className="font-bold text-xl flex-1 tracking-tight">
           {allowedItems[itemId].name ?? itemId}
         </h1>
         <Link

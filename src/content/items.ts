@@ -1,7 +1,12 @@
-export const allowedItems: Record<
-  number,
-  { itemId: number; name?: string; vendorSellPrice?: number }
-> = {
+export type ItemType = {
+  itemId: number;
+  name?: string;
+  vendorSellPrice?: number;
+};
+
+export type ItemTypeList = Record<number, ItemType>;
+
+export const allowedItems: ItemTypeList = {
   0: { name: "Spruce log", itemId: 0, vendorSellPrice: 6 },
   1: { name: "Pine log", itemId: 1, vendorSellPrice: 10 },
   2: { name: "Chestnut log", itemId: 2, vendorSellPrice: 30 },

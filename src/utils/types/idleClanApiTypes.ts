@@ -4,7 +4,7 @@ export type DetailedPriceItem = {
   averagePrice30Days: number;
   highestBuyPricesWithVolume: { key: number; value: number }[];
   lowestSellPricesWithVolume: { key: number; value: number }[];
-  itemId: string;
+  itemId: number;
   tradeVolume1Day: number;
 };
 

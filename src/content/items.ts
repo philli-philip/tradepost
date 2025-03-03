@@ -1,7 +1,7 @@
 export type ItemType = {
   itemId: number;
-  name?: string;
-  vendorSellPrice?: number;
+  name: string;
+  vendorSellPrice: number;
 };
 
 export type ItemTypeList = Record<number, ItemType>;

@@ -10,6 +10,7 @@
     "db-types": "supabase gen types typescript --project-id sjxjlqugoxffyrivzpny > ./src/utils/supabase/database.types.ts"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.22.0",
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.49.1",
     "@vercel/analytics": "^1.5.0",

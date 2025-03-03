@@ -1,6 +1,5 @@
 import { allowedItems } from "@/content/items";
 import { fetchItem, fetchPrice } from "./actions";
-import StaticFacts from "./StaticFacts";
 import MarketFacts from "./marketFacts";
 import { Period } from "@/utils/types/idleClanApiTypes";
 import DateSelector from "./DateSelector";
@@ -10,6 +9,7 @@ import { ArrowLeft } from "lucide-react";
 import { QuickSearch } from "./QuickSearch";
 import { MarketDepth } from "./MarketDepth";
 import { Suspense } from "react";
+import AISummary from "./aiSummary";
 
 export const revalidate = 60;
 
@@ -21,9 +21,9 @@ export default async function Page({
   searchParams: Promise<{ period: Period }>;
 }) {
   const itemId = (await params).item;
-  const item = await fetchItem(itemId);
   const period = (await searchParams).period;
   const prices = await fetchPrice({ itemId, period });
+  const itemDetails = await fetchItem(itemId);
 
   if (allowedItems[itemId] === undefined) {
     return <div>Item not yet supported by the Trade post</div>;
@@ -49,14 +49,14 @@ export default async function Page({
           </Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <StaticFacts item={itemId} />
-          <MarketFacts marketData={item} />
+          <MarketFacts marketData={itemDetails} />
+          <AISummary itemId={itemId} />
         </div>
         <section>
           <h3 className="font-bold tracking-tighter text-lg pb-4">
             Demand & supply
           </h3>
-          <MarketDepth item={item} />
+          <MarketDepth item={itemDetails} />
         </section>
         <div className="flex flex-row justify-between items-center">
           <h3 className="font-bold tracking-tighter text-lg">History</h3>

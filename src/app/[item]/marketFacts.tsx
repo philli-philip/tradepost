@@ -1,3 +1,4 @@
+import { allowedItems } from "@/content/items";
 import { compactGold, compactNumber } from "@/utils/formater/formater";
 import { DetailedPriceItem } from "@/utils/types/idleClanApiTypes";
 
@@ -8,6 +9,10 @@ export default function MarketFacts({
 }) {
   return (
     <div className="md:border border-gray-200 dark:border-gray-800 rounded-2xl md:p-6 grid grid-cols-2 gap-4">
+      <span>Vendor offer</span>
+      <span>
+        {compactGold(allowedItems[marketData.itemId].vendorSellPrice) ?? "--"}
+      </span>
       <span>Current highest buy</span>
       <span>{compactGold(marketData.highestBuyPricesWithVolume[0].key)}</span>
       <span>Current lowest offer</span>

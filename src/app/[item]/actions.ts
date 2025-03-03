@@ -58,32 +58,34 @@ export async function getGeminiOpinion({
     throw new Error("No Gemini key available");
   }
 
+  function bidItem({
+    item,
+    index,
+  }: {
+    item: { key: number; value: number };
+    index: number;
+  }) {
+    return `  ${index + 1}.  ${item.value} items @ ${item.key} gold \n`;
+  }
+
+  console.log(highestBuyPricesWithVolume);
   const inputMessage = `
   Task: please provide a description of the market situation for potential buyer and seller of the item with 180 or less characters for the traded item players in a video game that involves around harvesting resources, refining them and the build up a larger empire. The users that will see the text know the role of the item in the game. You can suggest different buy or sell prices, if you think they materialise soon. Do not repeat facts in the response. The tone of voice should sound like a medival merchant. Do not use any brackets. Format numbers above 1000 to a shorter version with k and M (example 12039 will become 12 k).
   
   item information: item name: ${itemName}. One NPC buy infinite amounts at ${vendorBuyPrice} gold
   Market history
   current sell offers (you buy from the lowest bidder first)
-  1. ${lowestSellPricesWithVolume[0].value ?? "no"} items @ ${
-    lowestSellPricesWithVolume[0].key ?? "no"
-  } gold
-    2. ${lowestSellPricesWithVolume[1].value ?? "no"} items @ ${
-    lowestSellPricesWithVolume[1].key ?? "no"
-  } gold
-
+  ${lowestSellPricesWithVolume.map((item, index) => bidItem({ item, index }))}
+  
   current buy offers (you must sell to the highest bidder first)
-  1. ${highestBuyPricesWithVolume[0].value ?? "no"} items @ ${
-    highestBuyPricesWithVolume[0].key ?? "no"
-  } gold
-  2. ${highestBuyPricesWithVolume[1].value ?? "no"} items @ ${
-    highestBuyPricesWithVolume[1].key ?? "no"
-  } gold
+${highestBuyPricesWithVolume.map((item, index) => bidItem({ item, index }))}
 
   trading volume last 24 hours: ${volume}
   24 hour pricing average: ${averagePrice1Day} gold
   7 day pricing average: ${averagePrice7Days} gold
   30 day pricing average:${averagePrice30Days} gold`;
 
+  console.log(inputMessage);
   const apiUrl =
     "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"; // Replace with the actual API endpoint if different
 

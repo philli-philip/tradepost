@@ -9,7 +9,7 @@ import { ArrowLeft } from "lucide-react";
 import { QuickSearch } from "./QuickSearch";
 import { MarketDepth } from "./MarketDepth";
 import { Suspense } from "react";
-import AISummary from "./aiSummary";
+import AISummary, { AISummaryLoading } from "./aiSummary";
 
 export const revalidate = 60;
 
@@ -50,7 +50,9 @@ export default async function Page({
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <MarketFacts marketData={itemDetails} />
-          <AISummary itemId={itemId} />
+          <Suspense fallback={<AISummaryLoading />}>
+            <AISummary itemId={itemId} />
+          </Suspense>
         </div>
         <section>
           <h3 className="font-bold tracking-tighter text-lg pb-4">

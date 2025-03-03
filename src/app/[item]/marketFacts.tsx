@@ -14,9 +14,17 @@ export default function MarketFacts({
         {compactGold(allowedItems[marketData.itemId].vendorSellPrice) ?? "--"}
       </span>
       <span>Current highest buy</span>
-      <span>{compactGold(marketData.highestBuyPricesWithVolume[0].key)}</span>
+      <span>
+        {marketData.highestBuyPricesWithVolume[0]
+          ? compactGold(marketData.highestBuyPricesWithVolume[0].key)
+          : "No buyer"}
+      </span>
       <span>Current lowest offer</span>
-      <span>{compactGold(marketData.lowestSellPricesWithVolume[0].key)}</span>
+      <span>
+        {marketData.lowestSellPricesWithVolume[0]
+          ? compactGold(marketData.lowestSellPricesWithVolume[0].key)
+          : "no seller"}
+      </span>
       <span>Today average</span>
       <span>{compactGold(marketData.averagePrice1Day)}</span>
       <span>7 day average</span>

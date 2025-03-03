@@ -266,6 +266,7 @@ export const allowedItems: ItemTypeList = {
     itemId: 379,
     vendorSellPrice: 115,
   },
+  390: { name: "Decayed book", itemId: 390, vendorSellPrice: 4_000 },
   400: { name: "Grape seeds", itemId: 400, vendorSellPrice: 80 },
   402: { name: "Papaya seeds", itemId: 402, vendorSellPrice: 100 },
   404: { name: "Dragon fruit seeds", itemId: 404, vendorSellPrice: 125 },

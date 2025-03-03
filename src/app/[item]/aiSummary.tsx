@@ -1,6 +1,5 @@
-import { allowedItems, ItemType } from "@/content/items";
+import { allowedItems } from "@/content/items";
 import { fetchItem, getGeminiOpinion } from "./actions";
-import { PriceHistory } from "@/utils/types/idleClanApiTypes";
 
 export default async function AISummary({ itemId }: { itemId: number }) {
   const itemDetails = await fetchItem(itemId);

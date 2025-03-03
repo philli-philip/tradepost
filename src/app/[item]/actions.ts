@@ -52,7 +52,7 @@ export async function getGeminiOpinion({
   averagePrice7Days: number;
   averagePrice30Days: number;
 }) {
-  const geminiKey = process.env.NEXT_PUBLIC_GEMINI_KEY;
+  const geminiKey = process.env.GEMINI_KEY;
 
   if (!geminiKey) {
     throw new Error("No Gemini key available");

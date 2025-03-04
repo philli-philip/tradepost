@@ -17,7 +17,7 @@ const AmountSlice = ({
   return (
     <div
       className={cn(
-        "h-12 relative flex items-center border-b border-gray-200 dark:border-gray-800",
+        "h-12 relative flex items-center border-b border-[gold]/40 [border-style:ridge] before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:bg-[url('./../../public/slate-dark.jpg')] hover:after:opacity-100 before:opacity-30 before:-z-10 before:[background-size:100%]",
         buyOrSell === "buy" ? "flex-row" : "flex-row-reverse"
       )}
     >

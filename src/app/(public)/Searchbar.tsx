@@ -36,14 +36,14 @@ export const SearchBar: React.FC<SearchBarInterface> = ({
   return (
     <div
       className={cn(
-        "flex rounded-xl mx-4 md:mx-0 bg-gray-100 dark:bg-gray-900",
+        "flex rounded mx-4 md:mx-0 bg-slate-900 shadow-[inset_0px_4px_8px_rgba(0,0,0,0.5)] hover:shadow-[inset_0px_1px_2px_rgba(0,0,0,0.5)] duration-75 hover border border-[gold]/40 [border-style:ridge]",
         className
       )}
     >
       <input
         ref={searchBar}
         onChange={onChange}
-        className="bg-transparent placeholder:text-gray-500 w-full p-3 px-6 rounded-xl"
+        className="bg-transparent w-full p-3 px-6 rounded-xl placeholder:text-[silver]/50 outline-1 -outline-offset-1 focus:outline-[gold]/100 outline-none"
         placeholder="Seach by name or id"
         {...props}
       />

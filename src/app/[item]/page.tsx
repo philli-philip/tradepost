@@ -34,7 +34,7 @@ export default async function Page({
       <div className="flex flex-col gap-6 px-4">
         <div className="flex flex-row-reverse justify-end gap-2">
           <QuickSearch />
-          <h1 className="font-bold text-xl flex-1 tracking-tight">
+          <h1 className=" font-medium uppercase px-4 font-serif bg-gradient-to-b text-transparent from-yellow-200 to-yellow-700 bg-clip-text text-xl flex-1">
             {allowedItems[itemId].name ?? itemId}
           </h1>
           <Link

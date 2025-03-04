@@ -22,7 +22,9 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="font-bold tracking-tight text-xl px-4">Tradepost</h1>
+      <h1 className="font-medium uppercase text-xl px-4 font-serif bg-gradient-to-b text-transparent from-yellow-200 to-yellow-700 bg-clip-text">
+        Tradepost
+      </h1>
       <DynamicList items={filteredData} />
       <div>
         <h2>All items</h2>

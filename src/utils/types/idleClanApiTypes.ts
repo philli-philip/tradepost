@@ -27,4 +27,11 @@ export type PriceHistory = {
   tradeVolume: number;
 }[];
 
+export type HotItem = {
+  itemId: number;
+  volume: number;
+};
+
+export type HotItemAPI = HotItem[];
+
 export type Period = "1d" | "7d" | "30d" | "1y";

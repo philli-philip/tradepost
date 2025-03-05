@@ -1,14 +1,13 @@
 "use client";
 
 import { cn } from "@/utils/tailwind/cn";
-import { useEffect, useRef } from "react";
+import { InputHTMLAttributes, useEffect, useRef } from "react";
 
-interface SearchBarInterface extends React.HTMLAttributes<HTMLInputElement> {
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+interface SearchBarProps extends InputHTMLAttributes<HTMLInputElement> {
+  className?: string;
 }
 
-export const SearchBar: React.FC<SearchBarInterface> = ({
-  onChange,
+export const SearchBar: React.FC<SearchBarProps> = ({
   className,
   ...props
 }) => {
@@ -42,8 +41,8 @@ export const SearchBar: React.FC<SearchBarInterface> = ({
     >
       <input
         ref={searchBar}
-        onChange={onChange}
-        className="bg-transparent w-full p-3 px-6 rounded-sm placeholder:text-[silver]/50 outline-1 -outline-offset-1 focus:outline-[gold]/100 outline-none"
+        id="searchbar"
+        className="bg-transparent placeholder:text-gray-500 w-full p-3 px-6 rounded-xl"
         placeholder="Seach by name or id"
         {...props}
       />

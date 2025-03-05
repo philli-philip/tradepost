@@ -27,7 +27,7 @@ export default async function AISummary({ itemId }: { itemId: number }) {
 
 export function AISummaryLoading() {
   return (
-    <div className="md:border relative before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:bg-[url('./../../public/slate-dark.jpg')] before:opacity-30 before:z-10 before:[background-size:100%] border-[gold]/40 [border-style:ridge] rounded-sm md:p-6 flex flex-col gap-4">
+    <div className="md:border isolate relative before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:bg-[url('./../../public/slate-dark.jpg')] before:opacity-30 before:z-10 before:[background-size:100%] border-[gold]/40 [border-style:ridge] rounded-sm md:p-6 flex flex-col gap-4">
       <h3 className="font-bold tracking-tighter text-lg">
         {"Merchant's opinion"}
       </h3>

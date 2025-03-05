@@ -35,7 +35,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   return (
     <div
       className={cn(
-        "flex rounded mx-4 md:mx-0 bg-slate-900 shadow-[inset_0px_4px_8px_rgba(0,0,0,0.5)] hover:shadow-[inset_0px_1px_2px_rgba(0,0,0,0.5)] duration-75 hover border border-[gold]/40 [border-style:ridge]",
+        "flex rounded mx-4 md:mx-0 bg-slate-900 shadow-[0px_4px_8px_rgba(0,0,0,0.5)] hover:shadow-[inset_0px_1px_2px_rgba(0,0,0,0.5)] duration-75 hover border border-[gold]/40 [border-style:ridge]",
         className
       )}
     >

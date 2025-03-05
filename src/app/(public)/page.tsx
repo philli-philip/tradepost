@@ -4,6 +4,8 @@ import DynamicList from "./DynamicList";
 import { HighTradeVolume } from "./HighTradeVolume";
 import { SearchBar } from "./Searchbar";
 import { fetchHotItems } from "../[item]/actions";
+import { h3Style } from "@/components/ui/typography/typography";
+import { cn } from "@/utils/tailwind/cn";
 
 export const revalidate = 60;
 
@@ -34,7 +36,7 @@ export default async function Home() {
       <HighTradeVolume items={hotItems} />
       <DynamicList items={filteredData} />
       <div>
-        <h2>All items</h2>
+        <h2 className={cn(h3Style)}>All items</h2>
         {rest?.map((item) => (
           <a href={`/${item.itemId}`} key={item.itemId} className="block">
             {allowedItems[item.itemId]?.name ?? item.itemId} — Lowest Sell

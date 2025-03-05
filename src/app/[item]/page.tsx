@@ -10,6 +10,8 @@ import { QuickSearch } from "./QuickSearch";
 import { MarketDepth } from "./MarketDepth";
 import { Suspense } from "react";
 import AISummary, { AISummaryLoading } from "./aiSummary";
+import { h3Style } from "@/components/ui/typography/typography";
+import { cn } from "@/utils/tailwind/cn";
 
 export const revalidate = 60;
 
@@ -44,7 +46,7 @@ export default async function Page({
           >
             <ArrowLeft
               size={24}
-              className="text-gray-500 hover:text-foreground hover:dark:text-foreground"
+              className="text-[gold] opacity-40 hover:opacity-100"
             />
           </Link>
         </div>
@@ -55,13 +57,11 @@ export default async function Page({
           </Suspense>
         </div>
         <section>
-          <h3 className="font-bold tracking-tighter text-lg pb-4">
-            Demand & supply
-          </h3>
+          <h3 className={cn(h3Style, "pb-2")}>Demand & supply</h3>
           <MarketDepth item={itemDetails} />
         </section>
         <div className="flex flex-row justify-between items-center">
-          <h3 className="font-bold tracking-tighter text-lg">History</h3>
+          <h3 className={h3Style}>History</h3>
           <DateSelector period={period ?? "7d"} />
         </div>
         <Chart

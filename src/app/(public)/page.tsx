@@ -4,6 +4,8 @@ import DynamicList from "./DynamicList";
 import { HighTradeVolume } from "./HighTradeVolume";
 import { SearchBar } from "./Searchbar";
 import { fetchHotItems } from "../[item]/actions";
+import { h3Style } from "@/components/ui/typography/typography";
+import { cn } from "@/utils/tailwind/cn";
 
 export const revalidate = 60;
 
@@ -27,12 +29,14 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="font-bold tracking-tight text-xl">Tradepost</h1>
+      <h1 className="font-medium uppercase text-xl font-serif bg-gradient-to-b text-transparent from-yellow-200 to-yellow-700 bg-clip-text">
+        Tradepost
+      </h1>
       <SearchBar />
       <HighTradeVolume items={hotItems} />
       <DynamicList items={filteredData} />
       <div>
-        <h2>All items</h2>
+        <h2 className={cn(h3Style)}>All items</h2>
         {rest?.map((item) => (
           <a href={`/${item.itemId}`} key={item.itemId} className="block">
             {allowedItems[item.itemId]?.name ?? item.itemId} — Lowest Sell

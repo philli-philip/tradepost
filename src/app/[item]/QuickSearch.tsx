@@ -42,8 +42,9 @@ export function QuickSearch() {
   return (
     <div
       className={cn(
-        "flex flex-row-reverse rounded-full relative",
-        state === "open" && "bg-gray-100 dark:bg-gray-900 "
+        "flex flex-row-reverse rounded-sm relative border border-transparent duration-150",
+        state === "open" &&
+          "bg-gray-100 dark:bg-gray-900 border border-[gold]/40 [border-style:ridge]"
       )}
     >
       <button
@@ -57,17 +58,17 @@ export function QuickSearch() {
             searchInput.current?.blur();
           }
         }}
-        className="size-8 flex rounded-full items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-800"
+        className="size-8 flex rounded-full items-center justify-center"
       >
         {state === "closed" ? (
           <SearchIcon
             size={24}
-            className="text-gray-700 duration-75 dark:text-gray-300 hover:text-foreground hover:dark:text-foreground"
+            className="text-[gold] opacity-40 duration-75 hover:opacity-100"
           />
         ) : (
           <X
             size={20}
-            className="text-gray-700 duration-75 dark:text-gray-300 hover:text-foreground hover:dark:text-foreground"
+            className="text-[gold] opacity-40 duration-75 hover:opacity-100"
           />
         )}
       </button>
@@ -80,13 +81,13 @@ export function QuickSearch() {
           state === "open" || searchTerm.length > 0
             ? "w-48 opacity-100 pl-3"
             : "w-0 opacity-0 pl-0",
-          "duration-100 placeholder:text-gray-500 outline-none bg-transparent rounded-full focus:w-48 focus:opacity-100 focus:pl-3"
+          "duration-100 placeholder:text-gray-500 box-border outline-none bg-transparent rounded-full focus:opacity-100 focus:pl-3"
         )}
         placeholder="Search for name or id..."
       ></input>
       <ul
         className={cn(
-          "absolute top-8 flex flex-col items-stretch max-h-72 overflow-y-auto bg-white dark:bg-gray-800 shadow-lg dark:shadow-black dark:shadow-2xl rounded-xl py-2 w-56 left-0",
+          "absolute top-8 flex z-20 flex-col border border-[gold]/40 [border-style:ridge] items-stretch max-h-72 overflow-y-auto bg-slate-950 shadow-2xl shadow-black rounded-sm -left-[1px] -right-[1px]",
           searchTerm.length > 1 ? "block" : "hidden"
         )}
       >
@@ -99,16 +100,22 @@ export function QuickSearch() {
     return (
       <>
         {filteredItems?.length === 0 && (
-          <span className="px-2 py-2  text-gray-700 dark:text-gray-400">
+          <span className="px-2 py-2 text-gray-700 dark:text-gray-400">
             No results
           </span>
         )}
-        {filteredItems?.map((item) => (
+        {filteredItems?.map((item, index) => (
           <Link
-            className="flex pl-4 py-1 focus:bg-gray-100 dark:focus:bg-gray-700 hover:bg-gray-200 duration-75 outline-none"
+            className="flex pl-4 py-1 relative isolate  duration-75 outline-none before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:bg-[url('./../../public/slate-dark.jpg')] focus:outline-[gold] focus:before:opacity-80 -outline-offset-1 hover:before:opacity-60 before:opacity-30 before:-z-10 before:[background-size:100%] border-b-2 border-b-black/40 border-t border-t-white/10 "
             key={item.itemId}
             href={`/${item.itemId}`}
           >
+            <style>
+              {`a:nth-child(${index + 1})::before {
+                  background-position-y: ${index * 80}px;
+                  }
+                `}
+            </style>
             {item.name}
           </Link>
         ))}

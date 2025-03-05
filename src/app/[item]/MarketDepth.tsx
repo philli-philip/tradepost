@@ -17,7 +17,7 @@ const AmountSlice = ({
   return (
     <div
       className={cn(
-        "h-12 relative flex items-center border-b border-[gold]/40 [border-style:ridge] before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:bg-[url('./../../public/slate-dark.jpg')] hover:after:opacity-100 before:opacity-30 before:-z-10 before:[background-size:100%]",
+        "h-12 relative flex items-center last:border-none border-b border-[gold]/40 overflow-hidden [border-style:ridge]",
         buyOrSell === "buy" ? "flex-row" : "flex-row-reverse"
       )}
     >
@@ -25,8 +25,8 @@ const AmountSlice = ({
         className={cn(
           "h-full absolute top-0",
           buyOrSell === "buy"
-            ? "right-0 bg-red-200 dark:bg-red-950 border-l border-red-600 dark:border-red-600"
-            : "left-0 bg-green-200 dark:bg-green-950 border-r border-green-600 dark:border-green-600"
+            ? "right-0 bg-red-950/50 border-l  border-red-800"
+            : "left-0 bg-green-950/50 border-r  border-green-800"
         )}
         style={{ width: fill + "%" }}
       ></div>
@@ -56,7 +56,7 @@ export const MarketDepth = ({ item }: { item: DetailedPriceItem }) => {
   const maxCount = Math.max(maxCountBuy, maxCountSell, 0);
 
   return (
-    <div className="flex flex-row items-stretch divide-x divide-gray-200 dark:divide-gray-800 border border-gray-200 dark:border-gray-800 rounded-lg">
+    <div className="flex flex-row items-stretch divide-x divide-[gold]/40 [border-style:ridge] border border-[gold]/40 rounded-sm relative before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:bg-[url('./../../public/slate-dark.jpg')] before:opacity-30 before:-z-10 before:[background-size:100%]">
       <div className="block w-full ">
         {item.highestBuyPricesWithVolume.map((item) => (
           <AmountSlice

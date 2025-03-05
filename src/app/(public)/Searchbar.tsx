@@ -43,7 +43,7 @@ export const SearchBar: React.FC<SearchBarInterface> = ({
       <input
         ref={searchBar}
         onChange={onChange}
-        className="bg-transparent w-full p-3 px-6 rounded-xl placeholder:text-[silver]/50 outline-1 -outline-offset-1 focus:outline-[gold]/100 outline-none"
+        className="bg-transparent w-full p-3 px-6 rounded-sm placeholder:text-[silver]/50 outline-1 -outline-offset-1 focus:outline-[gold]/100 outline-none"
         placeholder="Seach by name or id"
         {...props}
       />

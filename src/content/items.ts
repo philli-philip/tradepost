@@ -287,6 +287,7 @@ export const allowedItems: ItemTypeList = {
   },
   533: { name: "Normal lockpicks", itemId: 533, vendorSellPrice: 32 },
   540: { name: "Normal philosopher's stone", itemId: 540, vendorSellPrice: 32 },
+  561: { name: "Raw tuna", itemId: 561, vendorSellPrice: 65 },
   562: { name: "Cooked tuna", itemId: 562, vendorSellPrice: 75 },
   566: {
     name: "Dragon slayer's crossbow",

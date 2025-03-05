@@ -1,11 +1,9 @@
-import { allowedItems, isWhiteListed } from "@/content/items";
+import { isWhiteListed } from "@/content/items";
 import { AllItems } from "@/utils/types/idleClanApiTypes";
 import DynamicList from "./DynamicList";
 import { HighTradeVolume } from "./HighTradeVolume";
 import { SearchBar } from "./Searchbar";
 import { fetchHotItems } from "../[item]/actions";
-import { h3Style } from "@/components/ui/typography/typography";
-import { cn } from "@/utils/tailwind/cn";
 
 export const revalidate = 60;
 
@@ -17,10 +15,6 @@ export default async function Home() {
     }
   ).then((res) => res.json());
 
-  const rest = data
-    .filter((item) => !isWhiteListed(item.itemId))
-    .sort((a, b) => a.itemId - b.itemId);
-
   const filteredData = data
     .filter((item) => isWhiteListed(item.itemId))
     .sort((a, b) => a.itemId - b.itemId);
@@ -29,22 +23,12 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="font-medium uppercase text-xl font-serif bg-gradient-to-b text-transparent from-yellow-200 to-yellow-700 bg-clip-text">
+      <h1 className="font-medium px-4 md:px-0 uppercase text-xl font-serif bg-gradient-to-b text-transparent from-yellow-200 to-yellow-700 bg-clip-text">
         Tradepost
       </h1>
       <SearchBar />
       <HighTradeVolume items={hotItems} />
       <DynamicList items={filteredData} />
-      <div>
-        <h2 className={cn(h3Style)}>All items</h2>
-        {rest?.map((item) => (
-          <a href={`/${item.itemId}`} key={item.itemId} className="block">
-            {allowedItems[item.itemId]?.name ?? item.itemId} — Lowest Sell
-            price: {item.lowestSellPrice} — highest buy price:{" "}
-            {item.highestBuyPrice}
-          </a>
-        ))}
-      </div>
     </div>
   );
 }

@@ -38,7 +38,7 @@ export default function DynamicList({ items }: { items: AllItems }) {
   const filtered = items.filter(filterFunction);
   return (
     <div>
-      <h2 className={cn(h3Style, "pb-1")}>All items</h2>
+      <h2 className={cn(h3Style, "pb-1 px-4 md:px-0")}>All items</h2>
 
       {filtered.length === 0 ? (
         <div> No results</div>

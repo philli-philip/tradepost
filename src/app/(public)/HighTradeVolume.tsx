@@ -39,7 +39,7 @@ export function HighTradeVolume({ items }: { items: HotItemAPI }) {
 
   if (filtered.length > 0)
     return (
-      <section className="pb-2">
+      <section className="pb-2 px-4 md:px-0">
         <h2 className={cn(h3Style, "pb-1")}>Hottest trading items</h2>
         <div className="flex flex-row gap-2 flex-wrap">
           {filtered.map(

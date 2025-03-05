@@ -1,9 +1,8 @@
 "use client";
 import { AllItems, tradeItem } from "@/utils/types/idleClanApiTypes";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { allowedItems } from "@/content/items";
 import Link from "next/link";
-import { SearchBar } from "./Searchbar";
 import { compactGold } from "@/utils/formater/formater";
 
 export default function DynamicList({ items }: { items: AllItems }) {
@@ -22,14 +21,23 @@ export default function DynamicList({ items }: { items: AllItems }) {
     return false;
   };
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value); // Update the state with the input value
-  };
+  useEffect(() => {
+    const filterValue = (e: Event) => {
+      if ((e.target as HTMLInputElement).getAttribute("id") === "searchbar") {
+        setSearchValue((e.target as HTMLInputElement).value);
+      }
+    };
+
+    window.addEventListener("input", (e) => filterValue(e));
+
+    return () => window.removeEventListener("input", filterValue);
+  }, []);
 
   const filtered = items.filter(filterFunction);
   return (
     <>
-      <SearchBar onChange={handleSearchChange} className="mb-4" />
+      <h2 className=" tracking-tighter font-bold">All items</h2>
+
       {filtered.length === 0 ? (
         <div> No results</div>
       ) : (

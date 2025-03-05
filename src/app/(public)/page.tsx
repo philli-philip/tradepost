@@ -1,6 +1,9 @@
 import { allowedItems, isWhiteListed } from "@/content/items";
 import { AllItems } from "@/utils/types/idleClanApiTypes";
 import DynamicList from "./DynamicList";
+import { HighTradeVolume } from "./HighTradeVolume";
+import { SearchBar } from "./Searchbar";
+import { fetchHotItems } from "../[item]/actions";
 
 export const revalidate = 60;
 
@@ -20,9 +23,13 @@ export default async function Home() {
     .filter((item) => isWhiteListed(item.itemId))
     .sort((a, b) => a.itemId - b.itemId);
 
+  const hotItems = await fetchHotItems("1d");
+
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="font-bold tracking-tight text-xl px-4">Tradepost</h1>
+      <h1 className="font-bold tracking-tight text-xl">Tradepost</h1>
+      <SearchBar />
+      <HighTradeVolume items={hotItems} />
       <DynamicList items={filteredData} />
       <div>
         <h2>All items</h2>

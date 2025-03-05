@@ -1,5 +1,6 @@
 import {
   DetailedPriceItem,
+  HotItemAPI,
   Period,
   PriceHistory,
 } from "@/utils/types/idleClanApiTypes";
@@ -25,12 +26,37 @@ export async function fetchPrice({
   itemId: number;
   period?: Period;
 }): Promise<PriceHistory> {
-  return await fetch(
-    `https://query.idleclans.com/api/PlayerMarket/items/prices/history/${itemId}?period=${period}`,
-    {
-      next: { revalidate: 30 },
-    }
-  ).then((res) => res.json());
+  try {
+    const response = await fetch(
+      `https://query.idleclans.com/api/PlayerMarket/items/prices/history/${itemId}?period=${period}`,
+      {
+        next: { revalidate: 30 },
+      }
+    );
+    return response.json();
+  } catch (e) {
+    throw new Error(
+      e instanceof Error
+        ? e.message
+        : `Could not get price history for item ${itemId}`
+    );
+  }
+}
+
+export async function fetchHotItems(
+  period: Period = "1d"
+): Promise<HotItemAPI> {
+  try {
+    const response = await fetch(
+      `https://query.idleclans.com/api/PlayerMarket/items/volume/history?period=${period}`,
+      {
+        next: { revalidate: 30 },
+      }
+    );
+    return (await response.json()) ?? [];
+  } catch (e) {
+    throw new Error(e instanceof Error ? e.message : "Could not get hot items");
+  }
 }
 
 export async function getGeminiOpinion({
@@ -68,7 +94,6 @@ export async function getGeminiOpinion({
     return `  ${index + 1}.  ${item.value} items @ ${item.key} gold \n`;
   }
 
-  console.log(highestBuyPricesWithVolume);
   const inputMessage = `
   Task: please provide a description of the market situation for potential buyer and seller of the item with 180 or less characters for the traded item players in a video game that involves around harvesting resources, refining them and the build up a larger empire. The users that will see the text know the role of the item in the game. You can suggest different buy or sell prices, if you think they materialise soon. Do not repeat facts in the response. The tone of voice should sound like a medival merchant. Do not use any brackets. Format numbers above 1000 to a shorter version with k and M (example 12039 will become 12 k).
   
@@ -85,7 +110,6 @@ ${highestBuyPricesWithVolume.map((item, index) => bidItem({ item, index }))}
   7 day pricing average: ${averagePrice7Days} gold
   30 day pricing average:${averagePrice30Days} gold`;
 
-  console.log(inputMessage);
   const apiUrl =
     "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"; // Replace with the actual API endpoint if different
 
